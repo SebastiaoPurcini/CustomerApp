@@ -1,0 +1,69 @@
+﻿@model CustomerApp.UI.ViewModels.CustomerViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-weight-300">Editar Cliente</h1>
+<hr />
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" placeholder="Nome do cliente" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Age" class="control-label"></label>
+            <input asp-for="Age" class="form-control" placeholder="Idade do cliente" />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Gender" class="control-label"></label>
+            <select asp-for="Gender" class="form-control">
+                <option value="">Selecione...</option>
+                <option value="1">Feminino</option>
+                <option value="2">Masculino</option>
+                <option value="3">Não Informar</option>
+            </select>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="State" class="control-label"></label>
+            <select asp-for="State" id="stateId" class="form-control" asp-items="ViewBag.States">
+                <option value="">Selecione...</option>
+            </select>
+            <span asp-validation-for="State" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="City" class="control-label"></label>
+            <input id="cityId" asp-for="City" class="form-control" placeholder="Digite para pesquisar..."/>
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row pt-2">
+        <div class="form-group pr-2">
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-check"></i> Confirmar
+            </button>
+        </div>
+        <div class="form-group">
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fa fa-close"></i> Cancelar
+            </a>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+      await Html.RenderPartialAsync("_ValidationScriptsPartial");
+      await Html.RenderPartialAsync("_AutoCompleteScripts");
+    }
+}

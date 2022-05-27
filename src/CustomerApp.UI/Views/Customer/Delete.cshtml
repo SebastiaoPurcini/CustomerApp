@@ -1,0 +1,22 @@
+﻿@model CustomerApp.UI.ViewModels.CustomerViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div>
+    <h5 class="text-weight-300">Deseja realmente excluir o cliente @Html.DisplayFor(model => model.Name)?</h5>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <br />
+        <div class="modal-footer">
+            <a asp-action="Index" class="btn btn-secondary pr-2" data-dismiss="modal">
+                <i class="fa fa-close"></i> Cancelar
+            </a>
+            <button type="submit" class="btn btn-danger">
+                <i class="fa fa-trash"></i> Confirmar
+            </button>
+        </div>
+    </form>
+</div>
